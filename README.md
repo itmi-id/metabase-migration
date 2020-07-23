@@ -14,3 +14,9 @@ Clone this repository and `npm install`
 `node app.js duplicate —-questionId=[question_id] --collectionId=[collection_id] -—name=[name] -—databaseId=[database_id]`
 
 `--name` is optional, if it's not provided it will use the same question name.
+
+
+## To Do
+
+- Duplicating or updating question between different metabase instance
+- Duplicationg or updating Dashboard
