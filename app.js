@@ -35,7 +35,12 @@ yargs.command({
             }
 
             console.log("Response status code", response.statusCode)
-            console.log(response.body)
+            console.log("Question updated!")
+            console.log("ID:", response.body.id)
+            console.log("Name:", response.body.name)
+            console.log("Collection:", response.body.collection.name)
+            console.log("Updated At:", response.body.updated_at)
+            console.log("Database ID:", response.body.dataset_query.database)
         })
     }
 })
