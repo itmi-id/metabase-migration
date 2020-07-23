@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/itmi-id/metabase-migration/issues"
   },
-  "homepage": "https://github.com/itmi-id/metabase-migration#readme"
+  "homepage": "https://github.com/itmi-id/metabase-migration#readme",
+  "dependencies": {
+    "postman-request": "^2.88.1-postman.23",
+    "yargs": "^15.4.1"
+  }
 }
