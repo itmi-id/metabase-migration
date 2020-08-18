@@ -1,9 +1,16 @@
 # Metabase Migration
-
-Script for update and duplicating question in Metabase
+Script to update and duplicate Question in Metabase using Metabase REST API.
 
 ## How to use
 Clone this repository and `npm install`
+
+Create .env file in root folder that contains
+
+```
+METABASE_BASE_URL=xxx
+METABASE_USERNAME=xxx
+METABASE_PASSWORD
+```
 
 ### Update Question
 
@@ -16,7 +23,7 @@ Clone this repository and `npm install`
 `--name` is optional, if it's not provided it will use the same question name.
 
 
-## Not yet supported
+## Work in Progress
 
 - Duplicating or updating question between different metabase instance
-- Duplicationg or updating Dashboard
+- Duplicating or updating Dashboard
