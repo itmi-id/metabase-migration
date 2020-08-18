@@ -1,8 +1,8 @@
 const request = require('postman-request')
-
-const baseUrl = "https://dev-analytics.itmi.id/api"
-const username = "developer@itmi.id"
-const password = "ugWLsJRmMc_O0S"
+require('dotenv').config()
+const baseUrl = process.env.METABASE_BASE_URL
+const username = process.env.METABASE_USERNAME
+const password = process.env.METABASE_PASSWORD
 var token = null
 
 const auth = (callback) => {

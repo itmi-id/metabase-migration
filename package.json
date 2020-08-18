@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/itmi-id/metabase-migration#readme",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "postman-request": "^2.88.1-postman.23",
     "yargs": "^15.4.1"
   }
