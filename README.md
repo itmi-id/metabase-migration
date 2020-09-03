@@ -1,6 +1,8 @@
 # Metabase Migration
 Script to update and duplicate Question in Metabase using Metabase REST API.
 
+Here is a blog post on how we approach managing multiple environments in Embedded Metabase https://medium.com/itmi-engineering/managing-multiple-environments-with-embedded-metabase-87b074ea9aad
+
 ## How to use
 Clone this repository and `npm install`
 
@@ -9,7 +11,7 @@ Create .env file in root folder that contains
 ```
 METABASE_BASE_URL=xxx
 METABASE_USERNAME=xxx
-METABASE_PASSWORD
+METABASE_PASSWORD=xxx
 ```
 
 ### Update Question
