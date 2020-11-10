@@ -1,3 +1,5 @@
+![version](https://img.shields.io/github/v/tag/itmi-id/metabase-migration?label=latest%20version)
+
 # Metabase Migration
 Script to update and duplicate Question in Metabase using Metabase REST API.
 
