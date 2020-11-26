@@ -1,6 +1,5 @@
 const yargs = require('yargs')
-const metabase = require('./metabase.js')
-
+const metabase = require('./src/metabase.js')
 
 
 yargs.command({
