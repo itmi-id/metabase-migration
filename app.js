@@ -3,10 +3,28 @@ const metabase = require('./src/metabase.js')
 const metabase_async_await = require('./src/metabase-async-await.js')
 
 yargs.command({
-    command: 'test-update',
+    command: 'update',
+    describe: 'Update question',
+    builder: {
+        originId: {
+            describe: 'Origin question',
+            demandOption: true,
+            type: 'number'
+        },
+        destId: {
+            describe: 'Destination question',
+            demandOption: true,
+            type: 'number'
+        },
+        databaseId: {
+            describe: 'Database ID for destination question',
+            demandOption: true,
+            type: 'number'
+        }
+    },
     async handler(argv) {
         try {
-            const response = await metabase_async_await.update(68, 71, 6)
+            const response = await metabase_async_await.update(argv.originId, argv.destId, argv.databaseId)
             console.log("\n--------Question Updated!-------")
             console.log("Response status code", response.status, response.statusText)
             console.log("ID:", response.data.id)
@@ -22,10 +40,33 @@ yargs.command({
 })
 
 yargs.command({
-    command: 'test-duplicate',
+    command: 'duplicate',
+    describe: 'Duplicate question',
+    builder: {
+        questionId: {
+            describe: 'Question that will be duplicated',
+            demandOption: true,
+            type: 'number'
+        },
+        name: {
+            describe: 'New question name',
+            demandOption: false,
+            type: 'string'
+        },
+        collectionId: {
+            describe: 'Collection of new question',
+            demandOption: true,
+            type: 'number'
+        },
+        databaseId: {
+            describe: 'Database ID for new question',
+            demandOption: true,
+            type: 'number'
+        }
+    },
     async handler(argv) {
         try {
-            const response = await metabase_async_await.duplicate(68, 55, "New question name 2", 6)
+            const response = await metabase_async_await.duplicate(argv.questionId, argv.collectionId, argv.name, argv.databaseId)
             console.log("\n--------New Question Created!-------")
             console.log("Response status code", response.status, response.statusText)
             console.log("ID:", response.data.id)
@@ -46,7 +87,7 @@ yargs.command({
 })
 
 yargs.command({
-    command: 'update',
+    command: 'update-deprecated',
     describe: 'Update question',
     builder: {
         origin: {
@@ -89,7 +130,7 @@ yargs.command({
 })
 
 yargs.command({
-    command: 'duplicate',
+    command: 'duplicate-deprecated',
     describe: 'Duplicate question',
     builder: {
         questionId: {

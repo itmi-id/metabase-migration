@@ -26,7 +26,8 @@ async function update(originQuestionId, destinationQuestionId, destinationDataba
           embedding_params
   };
 
-  console.log("Updating question id", destinationQuestionId);
+  console.log("\nUpdating question id", destinationQuestionId);
+  console.log(body)
   const url = baseUrl + "/card/" + destinationQuestionId;
 
   const response = await axios.put(url, body, axiosConfig);
@@ -40,13 +41,13 @@ async function duplicate(questionId, collectionId, questionName, databaseId) {
 
   console.log("Retrieving question id", questionId);
   const {visualization_settings, description, enable_embedding, collection_position,
-     result_metadata, dataset_query, display, embedding_params, } = await getQuestion(questionId, axiosConfig);
+     result_metadata, dataset_query, display, embedding_params, name:oldName } = await getQuestion(questionId, axiosConfig);
   dataset_query.database = databaseId;
 
   var name = questionName;
   if (!name) {
-      name = response.body.name
-  };
+      name = oldName;
+  }
 
   const body = {
     visualization_settings,
@@ -60,7 +61,7 @@ async function duplicate(questionId, collectionId, questionName, databaseId) {
     enable_embedding,
     embedding_params
   };
-  console.log("Creating new question...");
+  console.log("\nCreating new question with payload...");
   console.log(body);
   const url = baseUrl + "/card/";
 

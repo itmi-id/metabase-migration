@@ -18,7 +18,7 @@ METABASE_PASSWORD=xxx
 
 ### Update Question
 
-`node app.js update —-origin=[question_id] --dest=[question_id] —-databaseId=[database_id]`
+`node app.js update —-originId=[question_id] --destId=[question_id] —-databaseId=[database_id]`
 
 ### Duplicate Question
 
