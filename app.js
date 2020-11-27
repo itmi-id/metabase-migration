@@ -1,6 +1,49 @@
 const yargs = require('yargs')
 const metabase = require('./src/metabase.js')
+const metabase_async_await = require('./src/metabase-async-await.js')
 
+yargs.command({
+    command: 'test-update',
+    async handler(argv) {
+        try {
+            const response = await metabase_async_await.update(68, 71, 6)
+            console.log("\n--------Question Updated!-------")
+            console.log("Response status code", response.status, response.statusText)
+            console.log("ID:", response.data.id)
+            console.log("Name:", response.data.name)
+            console.log("Collection:", response.data.collection.name)
+            console.log("Updated At:", response.data.updated_at)
+            console.log("Database ID:", response.data.dataset_query.database)
+        } catch (error) {
+            console.log("\nError!", error.response.status, error.response.statusText);
+            console.log(error.response.data);
+        }   
+    }
+})
+
+yargs.command({
+    command: 'test-duplicate',
+    async handler(argv) {
+        try {
+            const response = await metabase_async_await.duplicate(68, 55, "New question name 2", 6)
+            console.log("\n--------New Question Created!-------")
+            console.log("Response status code", response.status, response.statusText)
+            console.log("ID:", response.data.id)
+            console.log("Name:", response.data.name)
+            console.log("Collection:", response.data.collection.name)
+            console.log("Updated At:", response.data.updated_at)
+            console.log("Database ID:", response.data.dataset_query.database)
+        } catch (error) {
+            if (error.response) {
+                console.log("\nError!", error.response.status, error.response.statusText);
+                console.log(error.response.data);
+            } else{
+                console.log(error);
+            }
+            
+        }   
+    }
+})
 
 yargs.command({
     command: 'update',

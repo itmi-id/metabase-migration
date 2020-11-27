@@ -1,9 +1,10 @@
 const request = require('postman-request')
+
 require('dotenv').config()
+
 const baseUrl = process.env.METABASE_BASE_URL
 const username = process.env.METABASE_USERNAME
 const password = process.env.METABASE_PASSWORD
-var token = null
 
 const auth = (callback) => {
     const url = baseUrl + "/session"
@@ -132,6 +133,7 @@ const getQuestion = (id, callback) => {
 
     })
 }
+
 
 
 module.exports = {
