@@ -1,9 +1,10 @@
 const request = require('postman-request')
+
 require('dotenv').config()
+
 const baseUrl = process.env.METABASE_BASE_URL
 const username = process.env.METABASE_USERNAME
 const password = process.env.METABASE_PASSWORD
-var token = null
 
 const auth = (callback) => {
     const url = baseUrl + "/session"
@@ -99,7 +100,7 @@ const duplicate = (questionId, collectionId, questionName, databaseId, callback)
 
 const createQuestion = (body, callback) => {
     console.log("Creating new question...")
-
+    console.log(body)
     const url = baseUrl + "/card/"
     request({ url, json:true, headers: {"X-Metabase-Session": token}, method:"POST", body}, (error, response) => {
         if (error){
@@ -132,6 +133,7 @@ const getQuestion = (id, callback) => {
 
     })
 }
+
 
 
 module.exports = {
