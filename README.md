@@ -26,6 +26,11 @@ METABASE_PASSWORD=xxx
 
 `--name` is optional, if it's not provided it will use the same question name.
 
+### Duplicate Question on Destination Instance
+
+`node app.js duplicateAcross —-questionId=[question_id] --collectionId=[collection_id] -—name=[name] -—databaseId=[database_id]`
+
+`--name` is optional, if it's not provided it will use the same question name.
 
 ## Work in Progress
 
