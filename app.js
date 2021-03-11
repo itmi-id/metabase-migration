@@ -87,6 +87,53 @@ yargs.command({
 })
 
 yargs.command({
+    command: 'duplicateAcross',
+    describe: 'Duplicate question across environments',
+    builder: {
+        questionId: {
+            describe: 'Question that will be duplicated on destination',
+            demandOption: true,
+            type: 'number'
+        },
+        name: {
+            describe: 'New question name',
+            demandOption: false,
+            type: 'string'
+        },
+        collectionId: {
+            describe: 'Destination collection of new question',
+            demandOption: true,
+            type: 'number'
+        },
+        databaseId: {
+            describe: 'Destination Database ID for new question',
+            demandOption: true,
+            type: 'number'
+        }
+    },
+    async handler(argv) {
+        try {
+            const response = await metabase_async_await.duplicateAcross(argv.questionId, argv.collectionId, argv.name, argv.databaseId)
+            console.log("\n--------New Question Created!-------")
+            console.log("Response status code", response.status, response.statusText)
+            console.log("ID:", response.data.id)
+            console.log("Name:", response.data.name)
+            console.log("Collection:", response.data.collection.name)
+            console.log("Updated At:", response.data.updated_at)
+            console.log("Database ID:", response.data.dataset_query.database)
+        } catch (error) {
+            if (error.response) {
+                console.log("\nError!", error.response.status, error.response.statusText);
+                console.log(error.response.data);
+            } else{
+                console.log(error);
+            }
+            
+        }   
+    }
+})
+
+yargs.command({
     command: 'update-deprecated',
     describe: 'Update question',
     builder: {
