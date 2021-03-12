@@ -93,7 +93,7 @@ async function duplicateAcross(questionId, collectionId, questionName, databaseI
 
   const body = {
     visualization_settings,
-    description,
+    description: description ? description : null,
     collection_id: collectionId,
     collection_position,
     result_metadata,
