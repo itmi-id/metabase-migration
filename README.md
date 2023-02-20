@@ -1,14 +1,14 @@
 ![version](https://img.shields.io/github/v/tag/itmi-id/metabase-migration?label=latest%20version)
 
 # Metabase Migration
-Script to update and duplicate Question in Metabase using Metabase REST API.
+Script to update and duplicate Questions in Metabase using Metabase REST API.
 
 Here is a blog post on how we approach managing multiple environments in Embedded Metabase https://medium.com/itmi-engineering/managing-multiple-environments-with-embedded-metabase-87b074ea9aad
 
 ## How to use
 Clone this repository and `npm install`
 
-Create .env file in root folder that contains
+Create a .env file in the root folder that contains
 
 ```sh
 METABASE_BASE_URL=xxx
@@ -29,17 +29,17 @@ DESTINATION_METABASE_PASSWORD=xxx
 
 `node app.js duplicate —-questionId=[question_id] --collectionId=[collection_id] -—name=[name] -—databaseId=[database_id]`
 
-`--name` is optional, if it's not provided it will use the same question name.
+`--name` is optional. If it's not provided, it will use the same question name.
 
 ### Duplicate Question on Destination Instance
 
 `node app.js duplicateAcross —-questionId=[question_id] --collectionId=[collection_id] -—name=[name] -—databaseId=[database_id]`
 
-`--name` is optional, if it's not provided it will use the same question name.
+`--name` is optional. If it's not provided, it will use the same question name.
 
 ## Work in Progress
 
-- Duplicating or updating question between different metabase instance
+- Duplicating or updating questions between different Metabase instances
 - Duplicating or updating Dashboard
 
 
@@ -47,13 +47,13 @@ DESTINATION_METABASE_PASSWORD=xxx
 
 ** Note: this container should be used for testing purposes only!!! **
 
-Use the image already generated using the steps below (assumed to be using in the `docker-compose.yaml` file): 
+Use the image already generated using the steps below (assumed to be used in the `docker-compose.yaml` file): 
 
 ```sh
 docker-compose up
 ```
 
-You should then have a source `localhost:3000` and destination `localhost:3001` container to execute commands against. Add the following test `.env` file to your project to use them:
+You should have a source `localhost:3000` and destination `localhost:3001` container to execute commands against. Add the following test `.env` file to your project to use them:
 
 ```sh
 # source instance
@@ -71,14 +71,14 @@ Sanity check by running the following: `node app.js duplicateAcross --questionId
 
 If successful, you should be able to view the question @ [localhost:3001/collection/2](http://localhost:3001/collection/2)
 
-### Steps to generate a post install metabse image
+### Steps to generate a post-install Metabase image
 
 The following are the steps followed to generate the image used in the `docker-compose.yaml`:
 
 1. From cli, run `docker run -it -p 3000:3000 --name metabase metabase/metabase[:TAG]`
-1. Once container is launched, visit [localhost:3000/setup](http://localhost:3000/setup)
+1. Once the container is launched, visit [localhost:3000/setup](http://localhost:3000/setup)
 1. Click `Let's get started`
-1. Select `English` as preferred language
+1. Select `English` as your preferred language
 1. Enter the following:
     * First name: `test`
     * Last name: `test`
@@ -93,6 +93,6 @@ The following are the steps followed to generate the image used in the `docker-c
 1. Click `Save this`
 1. Verify that you have a new collection (id 2 in URL) called `Automatically Generated Dashboards`
 1. Verify that you have a new collection (id 3 in URL) called `A look at your People table`
-1. Back on the cli, run the following to generate a snapshot of the image: `docker commit metabase mafs/metabase-custom[:TAG]`
-1. Push your image to dockerhub: `docker push mafs/metabase-custom[:TAG]`
-1. Launch 2 instances (a source and destination instance) to run tests against containers: `docker-compose up`
+1. Back on the CLI, run the following to generate a snapshot of the image: `docker commit metabase mafs/metabase-custom[:TAG]`
+1. Push your image to DockerHub: `docker push mafs/metabase-custom[:TAG]`
+1. Launch two instances (a source and destination instance) to run tests against containers: `docker-compose up`
