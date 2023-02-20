@@ -1,0 +1,10 @@
+version: "3"
+services:
+    source:
+        image: mafs/metabase-custom
+        ports:
+            - 3000:3000
+    destination:
+        image: mafs/metabase-custom
+        ports:
+            - 3001:3000
